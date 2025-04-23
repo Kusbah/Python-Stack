@@ -1,44 +1,44 @@
 
-# # Assignment: Functions Basic I — Predictions and Explanations
+# Assignment: Functions Basic I — Predictions and Explanations
 
-# # 1
-# def a(): 
-#     return 5
-# print(a())
-# # Prediction: 5
+# 1
+def a(): 
+    return 5
+print(a())
+# Prediction: 5
 
-# # 2
-# def a(): 
-#     return 5
-# print(a() + a())
-# # Prediction: 10
+# 2
+def a(): 
+    return 5
+print(a() + a())
+# Prediction: 10
 
-# # 3
-# def a(): 
-#     return 5
-#     return 10
-# print(a())
-# # Prediction: 5
+# 3
+def a(): 
+    return 5
+    return 10
+print(a())
+# Prediction: 5
 
-# # 4
-# def a(): 
-#     return 5
-# print(10)
-# print(a())
-# # Prediction: 10  5
+# 4
+def a(): 
+    return 5
+print(10)
+print(a())
+# Prediction: 10  5
 
-# # 5
-# def a(): 
-#     print(5)
-# x = a()
-# print(x)
-# # Prediction: 5 5
+# 5
+def a(): 
+    print(5)
+x = a()
+print(x)
+# Prediction: 5 5
 
-# # 6
-# def a(b, c): 
-#     print(b + c)
-# print(a(1, 2) + a(2, 3))
-# # Prediction: error
+# 6
+def a(b, c): 
+    print(b + c)
+print(a(1, 2) + a(2, 3))
+# Prediction: error
 
 # 7
 def a(b, c): 
