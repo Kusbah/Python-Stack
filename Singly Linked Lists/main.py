@@ -7,9 +7,12 @@ class SList:
         self.head = None
     def add_to_front(self,value):
         new_node = SLnode(value)
-        cur_head = self.head
-        new_node.next = cur_head
-        self.head = new_node
+        #add head  
+        if self.head is None:
+            self.head = new_node
+        else:
+            new_node.next = self.head
+            self.head = new_node
         return self
     def print_values(self):
         temp = self.head
