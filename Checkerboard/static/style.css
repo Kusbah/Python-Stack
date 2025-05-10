@@ -1,0 +1,18 @@
+*{background-color: black;}
+.continer{
+    display: flex;
+    margin: auto;
+    flex-wrap: wrap;
+    width: 800px;
+}
+.green{
+    background-color: #556b2f;
+    width: 100px;
+    height: 100px;
+}
+
+.white{
+    background-color: #ffffe0;
+    width: 100px;
+    height: 100px;
+}
