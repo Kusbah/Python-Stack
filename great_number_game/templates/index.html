@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Great Number Game</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        padding-top: 50px;
+      }
+      .result {
+        display: inline-block;
+        padding: 30px;
+        margin: 20px 0;
+        font-size: 24px;
+        font-weight: bold;
+        color: white;
+      }
+      .low,
+      .high {
+        background-color: red;
+      }
+      .correct {
+        background-color: green;
+      }
+      input[type="number"] {
+        padding: 10px;
+        font-size: 16px;
+      }
+      button {
+        padding: 10px 20px;
+        font-size: 16px;
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Welcome to the Great Number Game!</h1>
+    <p>I am thinking of a number between 1 and 100<br />Take a guess!</p>
+
+    {% if message %} {% if 'Too' in message %}
+    <div class="result {{ 'low' if 'low' in message else 'high' }}">
+      {{ message }}
+    </div>
+    {% elif 'Correct!' in message %}
+    <div class="result correct">{{ session['number'] }} was the number!</div>
+    <form action="/play_again">
+      <button type="submit">Play again</button>
+    </form>
+    {% endif %} {% endif %} {% if 'Correct!' not in message %}
+    <form action="/guess" method="POST">
+      <input type="number" name="guess" min="1" max="100" required />
+      <br />
+      <button type="submit">Submit</button>
+    </form>
+    {% endif %}
+  </body>
+</html>
