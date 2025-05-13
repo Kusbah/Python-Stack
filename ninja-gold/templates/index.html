@@ -72,5 +72,8 @@
         {% for activity in activities %} {{ activity|safe }} {% endfor %}
       </ul>
     </div>
+    <form action="/delete">
+      <input type="submit" value="Restart" class="restbut" />
+    </form>
   </body>
 </html>

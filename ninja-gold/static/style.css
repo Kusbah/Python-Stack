@@ -66,3 +66,9 @@
     margin-bottom: 8px;
     font-size: 14px;
 }
+
+.restbut {
+    padding: 5px;
+    margin-top: 2rem;
+    margin-left: 3rem;
+}
