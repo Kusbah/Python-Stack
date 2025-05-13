@@ -1,0 +1,68 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.your-gold {
+    display: flex;
+    margin-top: 3rem;
+    margin-left: 3rem;
+}
+
+.gold-box {
+    margin-left: 1rem;
+    padding: 4px;
+}
+
+.flex-continer {
+    margin-top: 5rem;
+    display: flex;
+    justify-content: space-around;
+}
+
+.box {
+    border: 2px solid black;
+    width: 15rem;
+    height: 15rem;
+    text-align: center;
+}
+
+.headline {
+    margin-top: 1rem;
+    font-size: larger;
+}
+
+.earns {
+    margin-top: 2rem;
+}
+
+.butn {
+    margin-top: 2rem;
+    padding: 2rem;
+}
+
+.activties {
+    margin-top: 2rem;
+    margin-left: 4rem;
+}
+
+.activity-log {
+    border: 2px solid black;
+    height: 200px;
+    width: 95%;
+    margin: 0 auto;
+    overflow-y: scroll;
+    background-color: white;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+.activity-log ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.activity-log li {
+    margin-bottom: 8px;
+    font-size: 14px;
+}

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ninja Gold</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+  </head>
+  <body>
+    <div class="your-gold">
+      <p>Your Gold:</p>
+      <input
+        class="gold-box"
+        type="number"
+        id="gold"
+        name="gold"
+        value="{{gold}}"
+      />
+    </div>
+    <div class="flex-continer">
+      <div class="box">
+        <p class="headline">Farem</p>
+        <p class="earns">(earns 10-20 gold)</p>
+        <form action="/process_money" method="post">
+          <input type="hidden" name="building" value="farm" /><input
+            class="butn"
+            type="submit"
+            value="Find Gold!"
+          />
+        </form>
+      </div>
+      <div class="box">
+        <p class="headline">Cave</p>
+        <p class="earns">(earns 5-10 gold)</p>
+        <form action="/process_money" method="post">
+          <input type="hidden" name="building" value="cave" /><input
+            class="butn"
+            type="submit"
+            value="Find Gold!"
+          />
+        </form>
+      </div>
+      <div class="box">
+        <p class="headline">House</p>
+        <p class="earns">(earns 2-5 gold)</p>
+        <form action="/process_money" method="post">
+          <input type="hidden" name="building" value="house" /><input
+            class="butn"
+            type="submit"
+            value="Find Gold!"
+          />
+        </form>
+      </div>
+      <div class="box">
+        <p class="headline">Casino</p>
+        <p class="earns">(earns/takes 0-50 gold)</p>
+        <form action="/process_money" method="post">
+          <input type="hidden" name="building" value="casino" /><input
+            class="butn"
+            type="submit"
+            value="Find Gold!"
+          />
+        </form>
+      </div>
+    </div>
+    <p class="activities">Activities:</p>
+    <div class="activity-log">
+      <ul>
+        {% for activity in activities %} {{ activity|safe }} {% endfor %}
+      </ul>
+    </div>
+  </body>
+</html>
