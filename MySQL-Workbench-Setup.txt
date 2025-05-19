@@ -1,0 +1,13 @@
+1- SELECT
+SELECT *
+FROM clients
+2- insert
+insert into clients (first_name, last_name, email, joined_datetime)
+value ('Abdullah','Kusbah','abd@gmail.com',CURDATE());
+3- update
+update clients
+set first_name = 'abd'
+where id = 1;
+4- delete
+delete from clients
+where id = 2;
