@@ -1,0 +1,54 @@
+1-
+SELECT first_name,last_name,email,address.address
+FROM customer
+INNER JOIN 
+    address 
+    ON customer.address_id = address.address_id
+where address.city_id = 312
+2-
+SELECT title,description,release_year,rating,special_features,category.name AS category
+FROM film 
+JOIN film_category  ON film.film_id = film_category.film_id
+JOIN category  ON film_category.category_id = category.category_id
+WHERE category.name = 'Comedy';
+3-
+SELECT film_actor.actor_id,film.title,film.description,film.release_year
+FROM film 
+inner join film_actor on film.film_id = film_actor.film_id
+where film_actor.actor_id=5
+4-
+select first_name,last_name,email,address.address
+from customer
+inner join address on customer.address_id = address.address_id
+where store_id = 1 and address.city_id in (1,42,312,459)
+5-
+SELECT title, description, release_year, rating, special_features
+FROM film 
+JOIN film_actor  ON film.film_id = film_actor.film_id
+WHERE film_actor.actor_id = 15
+  AND film.rating = 'G'
+  AND film.special_features LIKE '%Behind the Scenes%';
+6-
+SELECT  film.film_id,film.title,actor.actor_id,actor.first_name
+from actor
+inner join film_actor on actor.actor_id = film_actor.actor_id
+inner join film on film_actor.film_id = film.film_id
+where film.film_id = 369
+7-
+SELECT f.title,f.description,f.release_year,f.rating,f.special_features,c.name AS genre
+FROM film f
+JOIN film_category fc ON f.film_id = fc.film_id
+JOIN category c ON fc.category_id = c.category_id
+WHERE f.rental_rate = 2.99 AND c.name = 'Drama';
+8-
+SELECT f.title,f.description,f.release_year,f.rating,f.special_features,c.name AS genre,
+    a.first_name,
+    a.last_name
+FROM film f
+JOIN film_actor fa ON f.film_id = fa.film_id
+JOIN actor a ON fa.actor_id = a.actor_id
+JOIN film_category fc ON f.film_id = fc.film_id
+JOIN category c ON fc.category_id = c.category_id
+WHERE a.first_name = 'SANDRA'
+    AND a.last_name = 'KILMER'
+    AND c.name = 'Action';
