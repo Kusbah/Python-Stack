@@ -1,0 +1,33 @@
+body {
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    text-align: center;
+}
+
+.label {
+    border: 2px solid black;
+    display: inline-block;
+    padding: 5px 10px;
+    margin-bottom: 20px;
+    font-size: 25px;
+    margin-top: 5rem;
+}
+
+.time-box {
+    border: 2px solid black;
+    padding: 20px 40px;
+    display: inline-block;
+}
+
+.date {
+    font-size: 50px;
+    font-weight: bold;
+}
+
+.time {
+    font-size: 28px;
+    margin-top: 5px;
+}
