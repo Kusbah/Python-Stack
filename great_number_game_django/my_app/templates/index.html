@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Great Number Game</title>
+<style>
+body{
+    text-align: center;
+}
+button{
+    margin-top: 1rem;
+}
+.message
+{
+        display: inline-block;
+        padding: 30px;
+        margin: 20px 0;
+        font-size: 24px;
+        font-weight: bold;
+        color: white;
+}
+.low,.high
+{
+    background-color: red;
+}
+.correct 
+{
+    background-color: green;
+}
+.btn{
+    padding: 10px;
+}
+</style>
+
+</head>
+<body>
+    <h1>Welcome to the Great Number Game!</h1>
+    <p>I am thinking of a number between 1 and 100</p>
+    Take a guess!
+    <br>
+    {% if message %} {% if "Too" in message %}
+    <div class="message 
+            {% if 'Too low' in message %}low
+            {% elif 'Too high' in message %}high
+            {% endif %}">
+            {{ message }}</div>
+        {% endif %}{%endif%}
+        {% if 'Correct' in message %}
+        <form action="/play-agine" method="get">
+            <div class="message 
+                        {% if 'The number was' in message  %}correct
+                        {% endif %}">
+                        {{ message }}
+                        <br><button type="submit" class="btn">Play Again</button>
+                    </div>
+        </form>
+        {% endif %}
+    <form action="/guess/"  method="post">
+        {% csrf_token %}
+        <input type="number" name="num">
+        <br>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
