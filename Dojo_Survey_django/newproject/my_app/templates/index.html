@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dojo Survey</title>
+</head>
+<body>
+    <form action="/result" method="post">
+        {% csrf_token %}
+        <label for="name"> Your Name:
+            <input type="text" name="name">
+        </label>
+        <br>
+        <label for="local">Dojo Location
+            <select name="local">
+                <option value="us">US</option>
+                <option value="uk">UK</option>
+            </select>
+        </label>
+        <br>
+        <label for="lang">Favorite Language
+            <select name="lang" id="lang">
+                <option value="c++">c++</option>
+                <option value="python">Python</option>
+                <option value="java">Java</option>
+            </select>
+        </label>
+        <br>
+        <label for="Comment">Comment (optional):
+            <textarea name="comment" id="textarea" cols="10" rows="2"></textarea>
+        </label>
+        <button type="submit">Submit the form</button>
+    </form>
+</body>
+</html>
