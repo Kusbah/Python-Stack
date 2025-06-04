@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ninja Gold</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}" >
+
+</head>
+<body>
+    <div class="continer">
+        <div class="gold">Your Gold: <span class="box">0</span></div>
+        <form action="/process_money" method="post">
+        <div class="flex">
+            
+            <div class="box-felx">
+                <div>Farm</div>
+                <div>(earns 10-20 gold)</div>
+                <button type="submit">Find gold</button>
+            </div>
+            <div class="box-felx">
+                <div>Farm</div>
+                <div>(earns 10-20 gold)</div>
+                <button type="submit">Find gold</button>
+            </div>
+            <div class="box-felx">
+                <div>Farm</div>
+                <div>(earns 10-20 gold)</div>
+                <button type="submit">Find gold</button>
+            </div>
+            <div class="box-felx">
+                <div>Farm</div>
+                <div>(earns 10-20 gold)</div>
+                <button type="submit">Find gold</button>
+            </div>
+        </div>
+    </form>
+    <div class="activt">Activities:</div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,28 @@
+
+
+.gold{
+    margin-left: 20vh;
+    margin-top: 10vh;
+    font-size: x-large;
+}
+.box{
+    border: 2px solid black;
+    padding-right: 30px;
+}
+.flex{
+    display: flex;
+    margin-top: 10vh;
+    justify-content: space-around;
+    text-align: center;
+    
+}
+.box-felx{
+    border: 2px solid black;
+    padding: 30px;
+    font-size: x-large;
+}
+.activt{
+    margin-top: 10vh;
+    margin-left: 12vh;
+    font-size: x-large;
+}

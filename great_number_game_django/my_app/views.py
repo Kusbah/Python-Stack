@@ -6,8 +6,12 @@ def index(request):
     if 'number' not in request.session:
         request.session['number'] = randint(1, 100)
         request.session['message'] = ''
-    return render(request,'index.html',{
-    'message': request.session.get('message', '')})
+    
+    context = {
+        'message': request.session.get('message', ''),
+    }
+    
+    return render(request, 'index.html', context)
 
     
 def guess(request):
