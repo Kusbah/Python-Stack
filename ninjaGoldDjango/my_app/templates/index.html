@@ -10,33 +10,49 @@
 </head>
 <body>
     <div class="continer">
-        <div class="gold">Your Gold: <span class="box">0</span></div>
-        <form action="/process_money" method="post">
+        <div class="gold">Your Gold: <span class="box">{{request.session.gold}}</span></div>
+        
         <div class="flex">
             
             <div class="box-felx">
                 <div>Farm</div>
                 <div>(earns 10-20 gold)</div>
-                <button type="submit">Find gold</button>
+                <form action="/process_money" method="post">
+                    {% csrf_token %}
+                <button type="submit" name="bullding" value="farm">Find gold</button>
+            </form>
             </div>
             <div class="box-felx">
-                <div>Farm</div>
+                <div>Cave</div>
                 <div>(earns 10-20 gold)</div>
-                <button type="submit">Find gold</button>
+                <form action="/process_money" method="post">
+                    {% csrf_token %}
+                <button type="submit" name="bullding" value="cave">Find gold</button>
+            </form>
             </div>
             <div class="box-felx">
-                <div>Farm</div>
+                <div>House</div>
                 <div>(earns 10-20 gold)</div>
-                <button type="submit">Find gold</button>
+                <form action="/process_money" method="post">
+                    {% csrf_token %}
+                <button type="submit" name="bullding" value="house">Find gold</button>
+            </form>
             </div>
             <div class="box-felx">
-                <div>Farm</div>
-                <div>(earns 10-20 gold)</div>
-                <button type="submit">Find gold</button>
+                <div>Quest</div>
+                <div>(earns/takes 0-50 gold)</div>
+                <form action="/process_money" method="post">
+                    {% csrf_token %}
+                <button type="submit" name="bullding" value="quest">Find gold</button>
+            </form>
             </div>
         </div>
-    </form>
     <div class="activt">Activities:</div>
+    <ul>
+        {% for activity in request.session.activities %}
+        {{ activity|safe }}
+        {% endfor %}
+        </ul>
     </div>
 </body>
 </html>
