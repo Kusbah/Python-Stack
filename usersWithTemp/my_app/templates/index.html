@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Users with Templates</title>
+    <style>
+        h1{
+            text-align: center;
+        }
+        th,td{
+            border: 1px solid #333;
+            padding: 8px;
+        }
+
+    </style>
+</head>
+<body>
+    <h1 >All the Users</h1>
+    <table style="border-collapse: collapse; margin: 20px auto; width: 80%; text-align: center; border: 2px solid #333;">
+        <thead>
+            <tr style="background-color: #f2f2f2;">
+                <th >ID</th>
+                <th >Name</th>
+                <th >Email</th>
+                <th >Age</th>
+            </tr>
+        </thead>
+        {% for user in users %}
+        <tr>
+            <td>{{ user.id }}</td>
+            <td>{{ user.first_name }} {{ user.last_name }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.age }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <hr>
+      <h1 >Add a User</h1>
+    <form action="" method="post"
+        style="width: 300px; margin: 20px auto; display: flex; flex-direction: column; gap: 10px;">
+        {% csrf_token %}
+        <label for="first_name">First Name:</label>
+        <input type="text" name="first_name" id="first_name">
+    
+        <label for="last_name">Last Name:</label>
+        <input type="text" name="last_name" id="last_name">
+    
+        <label for="email">Email:</label>
+        <input type="email" name="email" id="email">
+    
+        <label for="age">Age:</label>
+        <input type="number" name="age" id="age">
+    
+        <input type="submit" value="Submit" style="width: 100px; height: 50px; margin-top: 10px;">
+    </form>
+      
+    
+</body>
+</html>
