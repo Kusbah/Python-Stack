@@ -1,0 +1,7 @@
+python -m venv py3Env
+
+source py3Env/Scripts/activate
+
+pip install Django==2.2.4
+
+deactivate
