@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books & Authors</title>
+    <style>
+        .flex {
+            display: flex;
+        }
+
+        .flex1,
+        .flex2 {
+            flex: 2;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="flex">
+        <div class="flex1">
+            <h1 style="text-align: center;">Add a Book</h1>
+            <form action="" method="post" style="text-align: center;">
+                {% csrf_token %}
+                <label for="first_name">First Name</label>
+                <input type="text" style="margin-bottom: 20px;" name="first_name"><br>
+                <label for="last_name">Last Name</label>
+                <input type="text" name="last_name"><br>
+                <label for="notes">Notes:</label>
+                <textarea name="notes" id="notes" cols="20" rows="2"></textarea>
+                <br>
+                <button type="submit" style="padding: 15px;">Add</button>
+            </form>
+        </div>
+        <div class="flex2">
+            <table border="1" cellspacing="2" cellpadding="20">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for author in authors %}
+                    <tr>
+
+                        <td>{{author.id}}</td>
+                        <td>{{author.first_name}} {{author.last_name}}</td>
+                        <td><a href="{% url 'author_detail' author.id %}">View</a></td>
+
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</body>
+
+</html>

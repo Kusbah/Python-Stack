@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books/Authors with Templates</title>
+    <style>
+        .flex{
+            display: flex;
+        }
+        .flex1,.flex2{
+            flex: 2;
+        }
+    </style>
+</head>
+<body>
+    <div class="flex">
+        <div class="flex1">
+            <h1 style="text-align: center;">Add a Book</h1>
+            <form action="" method="post" style="text-align: center;">
+                {% csrf_token %}
+                <label for="title">Title</label>
+                <input type="text" style="margin-bottom: 20px;" name="title"><br>
+                <label for="desc" >Description</label>
+                <textarea name="desc" id="desc" cols="20" rows="2"></textarea>
+                <br>
+                <button type="submit" style="padding: 15px;">Add</button>
+            </form>
+        </div>
+        <div class="flex2">
+            <table border="1" cellspacing="2" cellpadding="20">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Title</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for book in books %}
+                    <tr>
+                        
+                        <td>{{book.id}}</td>
+                        <td>{{book.title}}</td>
+                        <td><a href="{% url 'book_detail' book.id %}">View</a></td>
+                        
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+              
+        </div>
+    </div>
+</body>
+</html>
