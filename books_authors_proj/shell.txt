@@ -1,0 +1,90 @@
+>>> Book.objects.create(title="C Sharp",desc="C Sharp Book")
+<Book: Book object (1)>
+>>> Book.objects.create(title="Java",desc="Java Book")
+<Book: Book object (2)>
+>>> Book.objects.create(title="Python",desc="Python Book")
+<Book: Book object (3)>
+>>> Book.objects.create(title="PHP",desc="PHP Book")
+<Book: Book object (4)>
+>>> Book.objects.create(title="Ruby",desc="Ruby Book")
+<Book: Book object (5)>
+
+
+
+>>> Authors.objects.create(first_name="Jana",last_name="Austen")
+<Authors: Authors object (1)>
+>>> Authors.objects.create(first_name="Emily",last_name="Dickinson")
+<Authors: Authors object (2)>
+>>> Authors.objects.create(first_name="Fyodor",last_name="Dostoevsky")
+<Authors: Authors object (3)>
+>>> Authors.objects.create(first_name="William",last_name="Shakespeare")
+<Authors: Authors object (4)>
+>>> Authors.objects.create(first_name="Lau",last_name="Tzu")
+<Authors: Authors object (5)>
+
+
+
+>>> c = Book.objects.get(id=1)
+>>> c.title = "C#"
+>>> c.save()
+
+>>> author_update = Authors.objects.get(id=4)
+>>> author_update.first_name="Bill"
+>>> author_update.save()
+
+
+>>> this_author = Authors.objects.get(id=1)
+>>> book_1 = Book.objects.get(id=1)
+>>> this_author.Book.add(book_1)
+>>> this_author.books.add(book_1)
+>>> book_2 = Book.objects.get(id=2)
+>>> this_author.books.add(book_2)
+
+
+
+>>> this_author = Authors.objects.get(id=2)
+>>> this_author.books.add(book_1)
+>>> this_author.books.add(book_2)
+>>> book_3 = Book.objects.get(id=3)
+>>> this_author.books.add(book_3)
+
+
+
+>>> this_author = Authors.objects.get(id=3)
+>>> this_author.books.add(book_1)
+>>> this_author.books.add(book_2)
+>>> this_author.books.add(book_3)
+>>> book_4 = Book.objects.get(id=4)
+>>> this_author.books.add(book_4)
+
+
+
+>>> this_author = Authors.objects.get(id=4)
+>>> this_author.books.add(book_4)
+>>> this_author.books.add(book_3)
+>>> this_author.books.add(book_2)
+>>> this_author.books.add(book_1)
+>>> book_5 = Book.objects.get(id=5)
+>>> this_author.books.add(book_5)
+
+
+>>> this_book = Book.objects.get(id=3)
+>>> this_book.authors.all()
+<QuerySet [<Authors: Authors object (2)>, <Authors: Authors object (3)>, <Authors: Authors object (4)>]>
+
+
+>>> this_author = Authors.objects.get(id=5)
+>>> this_author.books.add(book_2)
+
+
+
+>>> this_author = Authors.objects.get(id=3)
+>>> this_author.books.all()
+<QuerySet [<Book: Book object (1)>, <Book: Book object (2)>, <Book: Book object (3)>, <Book: Book object (4)>]>
+
+
+
+
+>>> this_book = Book.objects.get(id=5)
+>>> this_book.authors.all()
+<QuerySet [<Authors: Authors object (4)>]>
