@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add a New Course</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 2rem;
+        }
+
+        h1 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        label {
+            display: inline-block;
+            width: 80px;
+            vertical-align: top;
+            margin-bottom: 0.5rem;
+        }
+
+        input,
+        textarea {
+            width: 300px;
+            border: 1px solid #000;
+        }
+
+        textarea {
+            height: 80px;
+        }
+
+        .btn-add {
+            background-color: green;
+            color: white;
+            padding: 5px 15px;
+            margin-left: 80px;
+        }
+        table{
+            margin-top: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Add a new course</h1>
+    <form action="" method="post">
+        {% csrf_token %}
+        <div>
+            <label for="name">Name:</label>
+            <input type="text" name="name" id="name">
+        </div>
+        <div style="margin-top: 0.5rem;">
+            <label for="description">Description:</label>
+            <textarea name="description" id="description"></textarea>
+        </div>
+        <div style="margin-top: 0.5rem;">
+            <button type="submit" class="btn-add">Add</button>
+        </div>
+    </form>
+    {% if messages %}
+    <ul>
+        {% for message in messages %}
+        <li style="color: red;">{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    <table border="1" cellspacing="2" cellpadding="20">
+        <tr>
+            <td>Course Name</td>
+            <td>Description</td>
+            <td>Date Added</td>
+            <td>Actions</td>
+        </tr>
+        {% for courese in coures %}
+        <tr>
+            <td>{{courese.name}}</td>
+            <td>{{courese.description}}</td>
+            <td>{{courese.create_at}}</td>
+            <td><a href="{% url 'confirm' courese.id %}">remove</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+    
+</body>
+
+</html>
