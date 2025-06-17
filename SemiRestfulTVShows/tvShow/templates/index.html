@@ -1,52 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create</title>
     <style>
-        *{
+        * {
             margin: 0;
             padding: 0;
         }
-        .continer{
+
+        .container {
             margin: auto;
             width: 60%;
             margin-top: 5rem;
         }
-        label{
+
+        label {
             font-size: x-large;
             margin-top: 10px;
             margin-bottom: 10px;
         }
-        input{
+
+        input {
             margin-top: 5px;
             height: 30px;
         }
-        .btn-create{
-            margin-left:  40%;
+
+        .btn-create {
+            margin-left: 40%;
             width: 20%;
             height: 3rem;
-            
         }
     </style>
 </head>
+
 <body>
-    <div class="continer">
+    <div class="container">
         <p><a href="{% url 'show' %}">Go Back</a></p>
         <h1>Add a New Show</h1>
+
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+
         <form action="" method="post">
             {% csrf_token %}
-        <label for="Title">Title:</label><br>
-        <input type="text" name="title" style="width: 100%;">
-        <label for="Newtwork" style="padding-right: 35%;">Newtwork:</label> 
-        <label for="releasedata" >Release Data:</label><br>
-        <input type="text" name="network" style="width: 40%; margin-right: 50px;">
-        <input type="date" name="release_date" required style="width: 52%;"><br>
-        <label for="Description" style="margin-bottom: 10px;">Description:</label><br>
-        <textarea name="description" id="description" style="width: 802px; height: 161px;"></textarea><br>
-        <button type="submit" class="btn-create" >Create</button>
-    </form>
+
+            <label for="title">Title:</label><br>
+            <input type="text" name="title" style="width: 100%;" value="{{ old_data.title|default_if_none:'' }}"><br>
+
+            <label for="network" style="padding-right: 35%;">Network:</label>
+            <label for="release_date">Release Date:</label><br>
+            <input type="text" name="network" style="width: 40%; margin-right: 50px;"
+                value="{{ old_data.network|default_if_none:'' }}">
+            <input type="date" name="release_date" style="width: 52%;"
+                value="{{ old_data.release_date|default_if_none:'' }}"><br>
+
+            <label for="description" style="margin-bottom: 10px;">Description:</label><br>
+            <textarea name="description" id="description"
+                style="width: 802px; height: 161px;">{{ old_data.description|default_if_none:'' }}</textarea><br>
+
+            <button type="submit" class="btn-create">Create</button>
+        </form>
     </div>
 </body>
+
 </html>
