@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login & Registration
+    </title>
+    <style>
+        .felx-box {
+            width: 90%;
+            display: flex;
+            margin: 0 auto;
+        }
+
+        .reg,
+        .login {
+            flex: 2;
+            font-size: xx-large;
+
+        }
+
+        input {
+            padding: 10px 30px;
+        }
+
+        form {
+            font-size: large;
+        }
+
+        button {
+            padding: 5px 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="felx-box">
+        <div class="reg">Registration
+            <form action="/register" method="post">
+                {% csrf_token %}
+                <label for="first_name">First Name: </label>
+                <input type="text" name="first_name"><br>
+                <label for="last_name">Last Name: </label>
+                <input type="text" name="last_name"><br>
+                <label for="email">Email: </label>
+                <input type="text" name="email"><br>
+                <label for="password">Password: </label>
+                <input type="password" name="password"><br>
+                <label for="confirm_password">Confirm Password: </label>
+                <input type="password" name="confirm_password"><br>
+                <button type="submit">Registra</button>
+            </form>
+            {% if messages %}
+            {% for message in messages %}
+            <p style="color:red;">{{ message }}</p>
+            {% endfor %}
+            {% endif %}
+
+        </div>
+        <div class="login">Login
+            <form action="/login" method="post">
+                {% csrf_token %}
+                <label for="email">Email: </label>
+                <input type="text" name="email"><br>
+                <label for="password">Password: </label>
+                <input type="password" name="password"><br>
+                <button type="submit">Login</button>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
