@@ -1,0 +1,28 @@
+<h1>Welcome, {{user.first_name}} <a href="{% url 'logout' %}" style="float: right;">logout</a></h1>
+<hr>
+<h1>{{ book.title }}</h1>
+<p>Added by: {{ book.uploaded_by.first_name }} {{ book.uploaded_by.last_name }}</p>
+<p>Added on: {{ book.created_at }}</p>
+<p>Last updated on: {{ book.updated_at }}</p>
+
+<h3>Users Who Like This Book:</h3>
+{% for liker in book.users_who_like.all %}
+<li>{{ liker.first_name }} {{ liker.last_name }}</li>
+{% empty %}
+<li>No one has liked this book yet.</li>
+{% endfor %}
+<ul>
+    {% if user in book.users_who_like.all %}
+    <form action="{% url 'unfavorite_book' book.id %}" method="post" style="display:inline;">
+        {% csrf_token %}
+        <button type="submit" style="color:red;">Un-Favorite</button>
+    </form>
+    {% else %}
+
+    <form action="{% url 'favorite_book' book.id %}" method="post" style="display:inline;">
+        {% csrf_token %}
+        <button type="submit">Favorite</button>
+    </form>
+    {% endif %}
+
+</ul>

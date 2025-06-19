@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Favorite Books</title>
+    <style>
+        .flex{
+            display: flex;
+        }
+        .add{
+            flex: 3;
+        }
+        .all-books{
+            flex: 2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome, {{user.first_name}} <a href="{% url 'logout' %}" style="float: right;">logout</a></h1>
+    <hr>
+    <div class="flex">
+        <div class="add">
+            <h1>Add a Favorite Book</h1>
+            <form action="/add" method="post">
+                {% csrf_token %}
+                <label for="title" >Title: </label>
+                <input type="text" name="title" style="margin-bottom: 10px; margin-left: 40px;"><br>
+                <label for="desc">Description: </label>
+                <textarea name="desc" id="desc" cols="40%" rows="3%"></textarea><br>
+                <button type="submit" style="font-size: x-large; margin-left: 30%; margin-top: 2rem;">Add</button>
+            </form>
+            {% if messages %}
+            <ul>
+                {% for message in messages %}
+                <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {%endif %}
+        </div>
+        <div class="all-books">
+            <h1>All Books</h1>
+            {% for books in all_books %}
+            <a href="{% url 'view_book' books.id %}" style="font-size: xx-large;">{{books.title}}</a>
+            <p style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;">
+                (add by {{ books.uploaded_by.first_name }} {{ books.uploaded_by.last_name}})
+            </p>
+            <p>{{books.desc}}</p>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
