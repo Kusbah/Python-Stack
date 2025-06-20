@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login registration</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .continer-flex{
+            display: flex;
+            width: 90%;
+            margin: 0 auto;
+            margin-top: 3rem;
+        }
+        .registartion,.login{
+            flex: 2;
+        }
+        .label-text{
+            font-size: x-large;
+            padding-right: 40px;
+            
+        }
+        .input-text{
+            height: 20px;
+            margin: 0;
+            padding-left: 10px;
+            margin-bottom: 2rem;
+        }
+        .reg-btn{
+            padding: 10px 20px;
+            margin-left:50%;
+        }
+    </style>
+</head>
+<body>
+    <div class="continer-flex">
+        <div class="registartion">
+            <form action="/register" method="post">
+                {% csrf_token %}
+                <label for="first_name" class="label-text">First name: </label>
+                <input type="text" name="first_name" class="input-text"><br>
+                <label for="last_name" class="label-text">Last name: </label>
+                <input type="text" name="last_name" class="input-text"><br>
+                <label for="email" class="label-text">Email: </label>
+                <input type="text" name="email" class="input-text"><br>
+                <label for="password" class="label-text">Password: </label>
+                <input type="password" name="password" class="input-text"><br>
+                <label for="confirm_password" class="label-text">Confirm Password:</label>
+                <input type="password" name="confirm_password" class="input-text">
+                <button type="submit" class="reg-btn">Register</button>
+        </form>
+        {% if messages %}
+        <ul>
+            {% for message in messages %}
+            <li style="color: red;">{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+        <div class="login">
+            <div class="registartion">
+                <form action="/login" method="post">
+                    {% csrf_token %}
+                    <label for="email" class="label-text">Email: </label>
+                    <input type="text" name="email" class="input-text"><br>
+                    <label for="password" class="label-text">Password: </label>
+                    <input type="password" name="password" class="input-text"><br>
+                    <button type="submit" class="reg-btn">Login</button>
+                    </form>
+        </div>
+    </div>
+
+</body>
+</html>

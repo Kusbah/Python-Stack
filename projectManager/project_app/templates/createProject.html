@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create a project</title>
+    <style>
+        .logout-link{
+            float: right;
+        }
+        .continer{
+            width: 90%;
+            margin: 0 auto;
+        }
+        .label-text{
+            font-size: x-large;
+            padding-right: 40px;
+            
+        }
+        .input-text{
+            height: 20px;
+            margin: 0;
+            padding-left: 10px;
+            margin-bottom: 2rem;
+        }
+        .reg-btn{
+            padding: 10px 20px;
+        }
+        .link-btn{
+            color: black;
+            font-style: normal;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Hello {{user.first_name}} {{user.last_name}} <a href="{% url 'logout' %}" class="logout-link">Logout</a></h1>
+    <hr>
+    <div class="continer">
+        <h1>Create Project</h1>
+        <form action="{% url 'create_project' %}" method="post">
+            {% csrf_token %}
+            <label for="name" class="label-text">Project Name: </label>
+            <input type="text" name="name" class="input-text"><br>
+            <label for="description" class="label-text">Description</label>
+            <textarea name="description" id="description" cols="30" rows="10"></textarea><br>
+            <label for="start_date" class="label-text">Start Date</label>
+            <input type="date" name="start_date" class="input-text"><br>
+            <label for="end_date" class="label-text">Start Date</label>
+            <input type="date" name="end_date" class="input-text"><br>
+            <button type="submit"  class="reg-btn">Create</button>
+        </form>
+        <button class="reg-btn"><a href="{% url 'dashboard' %}" class="link-btn"> Back</a></button>
+    </div>
+    {% if messages %}
+    <ul>
+        {% for message in messages %}
+        <li style="color: red;">{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+</body>
+</html>

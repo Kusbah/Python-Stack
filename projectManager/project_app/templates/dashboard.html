@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <style>
+        .logout-link{
+            float: right;
+        }
+        .continer{
+            width: 90%;
+            margin: 0 auto;
+            margin-top: 1rem;
+        }
+        .create-btn{
+            padding: 5px;
+            font-size: x-large;
+            border-radius: 10px;
+        }
+        .link-btn{
+            color: black;
+            font-style: normal;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome {{user.first_name}} to Developers Dashboard <a href="{% url 'logout' %}" class="logout-link">Logout</a></h1>
+    <hr>
+    <div class="continer">
+        <button type="button" class="create-btn" ><a href="{% url 'createproject' %}" class="link-btn">Create Project +</a></button>
+        <table border="1" style="width: 100%; text-align: center;">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Project name</th>
+                    <th>Project owner</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for project in project %}
+                <tr>
+                    <td>{{ project.id }}</td>
+        
+                    <td>
+                        <a href="{% url 'projectDetails' project.id %}">{{ project.name }}</a>
+                    </td>
+                    <td>{{ project.project_owner.first_name }} {{ project.project_owner.last_name }}</td>
+        
+                    <td>
+                        {% if user.id == project.project_owner.id %}
+
+                        <form action="{% url 'deleteproject' project.id %}" method="post" style="display:inline;">
+                            {% csrf_token %}
+                            <button type="submit" style="background-color: #d9534f; color: white;">
+                                Delete 
+                            </button>
+                        </form>
+                        {% else %}
+                        {% if user in project.team.all %}
+
+                        <form action="{% url 'separateproject' project.id %}" method="post" style="display:inline;">
+                            {% csrf_token %}
+                            <button type="submit" style="background-color: #f0ad4e; color: white;">
+                                Separate -
+                            </button>
+                        </form>
+                        {% else %}
+                        <form action="{% url 'joinproject' project.id %}" method="post" style="display:inline;">
+                            {% csrf_token %}
+                            <button type="submit" style="background-color: #5bc0de; color: white;">
+                                Join +
+                            </button>
+                        </form>
+                        {% endif %}
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody></table>
+    </div>
+
+</body>
+</html>

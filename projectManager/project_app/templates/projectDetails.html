@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>project Details</title>
+    <style>
+        .logout-link{
+            float: right;
+        }
+        .continer{
+            width: 90%;
+            margin: 0 auto;
+            margin-top: 1rem;
+        }
+        .link-btn{
+            text-decoration: none;
+            color:  black;
+        }
+        .desh-btn{
+            padding: 10px 20px;
+            float: right;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>{{project.name}} <a href="{% url 'logout' %}" class="logout-link">Logout</a></h1>
+    <hr>
+    <button class="desh-btn"><a href="{% url 'dashboard' %}" class="link-btn"> Dashbored</a></button>
+    <div class="continer">
+        <p>Project name: <strong>{{project.name}}</strong></p>
+        <p><strong>project owner: {{project.project_owner.first_name}} {{project.project_owner.last_name}}</strong></p>
+        <p>{{project.description}}</p>
+    </div>
+    {% if owner %}
+    <button class="desh-btn"><a class="link-btn" href="{% url 'editproject' project.id %}">Edit Project</a></button>
+    <button class="desh-btn"><a  class="link-btn"href="{% url 'deleteproject' project.id %}">Delete Project</a></button>
+    {% endif %}
+    <div class="continer">
+        <h3>Dry Team</h3>
+        <ul>
+            {% for member in team_members %}
+            <li>{{ member.first_name }} {{ member.last_name }}</li>
+            {% empty %}
+            <li>No team members yet.</li>
+            {% endfor %}
+        </ul>
+        </div>
+</body>
+</html>
